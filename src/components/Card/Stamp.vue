@@ -2,9 +2,12 @@
     <div>
         <g-image 
             src="~/assets/stamps/utrecht.png"/>
-        <span class="stamp-location">
+        <span class="location">
             {{ location }}
         </span>
+    <g-image
+        class="postage-stamp"
+        src="~/assets/stamps/postage-stamp.svg"/>
     </div>
 </template>
 
@@ -38,7 +41,7 @@ export default {
 	padding: var(--stamp-padding);
 	background: white;
 	position: relative;
-	filter: drop-shadow(0px 0px 4px rgba(0,0,0,0.5));
+	filter: drop-shadow(0px 0px 3px rgba(0,0,0,0.5));
 	background: radial-gradient(
 		transparent 0px, 
 		transparent var(--stamp-border-size), 
@@ -51,7 +54,7 @@ export default {
     transform: rotate(var(--stamp-rotation));
 }
 
-.stamp-location {
+.stamp .location {
     display: block;
     width: var(--stamp-width);
     text-align: center;
@@ -68,6 +71,14 @@ export default {
 .stamp img {
 	width: inherit;
 	height: inherit;
+}
+
+.stamp .postage-stamp {
+    position: absolute;
+    left: 0px; top: 0px;
+    width: calc(3 * var(--stamp-width));
+    transform: translateX(-75%) rotate(var(--rotation));
+    mask-image: url('../../assets/stamps/mask.png');
 }
 
 </style>

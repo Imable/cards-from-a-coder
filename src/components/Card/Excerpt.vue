@@ -14,3 +14,9 @@ export default {
     ]
 }
 </script>
+
+<style>
+.excerpt h2 {
+    padding-bottom: var(--card-padding);
+}
+</style>

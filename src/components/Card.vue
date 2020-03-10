@@ -10,11 +10,11 @@
         />
     <Address
         class="address"
+        :addressee="post.addressee"
         :destination="post.destination"/>
     <div
         class="vl"
-        aria-hidden>
-        </div>
+        aria-hidden/>
     <!-- <p class="date" v-html="post.date" />
     <h1 class="title" v-html="post.title" />
     <p class="description" v-html="post.description" />
@@ -52,7 +52,6 @@ export default {
     --card-width: calc(1.5 * var(--card-height));
     --card-padding: calc(0.05 * var(--card-height));
     --rotation: -1deg;
-    background-color: rgb(239, 240, 239);
     height: var(--card-height);
     width: var(--card-width);
     padding: var(--card-padding);
@@ -68,7 +67,13 @@ export default {
         "content content line address address"
         "content content . address address";
     justify-content: center;
+    
     transform: rotate(var(--rotation));
+
+    box-shadow: 1px 2px 3px rgba(0, 0, 0, 0.514);
+    background-color: rgb(230, 230, 222);
+    background-image: url('../assets/stamps/mask.png');
+    background-blend-mode: difference;
 }
 
 .card .stamp {
@@ -82,6 +87,7 @@ export default {
 
 .card .excerpt {
     grid-area: content;
+    align-self: center;
 }
 
 .card .vl {

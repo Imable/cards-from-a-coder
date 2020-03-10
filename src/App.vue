@@ -31,6 +31,7 @@ export default {
 <style>
 * {
     margin: 0px; padding: 0px;
+    font-family: Consolas, Arial;
 }
 
 *:not(h1):not(h2):not(h3) {
@@ -38,10 +39,19 @@ export default {
     line-height: 1.25em;
 }
 
+html {
+    background-color: white;
+}
+
 
 
 .vl {
     border-left: 2px solid rgb(0, 0, 0);
     height: 100%;
+}
+
+.hl {
+    border-top: 2px solid black;
+    width: 100%;
 }
 </style>
