@@ -26,6 +26,7 @@ query {
       node {
         id
         title
+        destination
         location
         timeToRead
         description

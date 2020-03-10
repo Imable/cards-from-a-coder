@@ -1,5 +1,5 @@
 <template>
-    <div class="stamp">
+    <div>
         <g-image 
             src="~/assets/stamps/utrecht.png"/>
         <span class="stamp-location">
@@ -9,10 +9,15 @@
 </template>
 
 <script>
+import RandomRotation from '~/mixins/RandomRotation'
+
 export default {
     name: 'Stamp',
     props: [
         'location'
+    ],
+    mixins: [
+        RandomRotation
     ]
 }
 </script>
@@ -21,18 +26,19 @@ export default {
 /* Courtesy: https://codepen.io/orhanveli/pen/tbGJL */
 .stamp {
     --stamp-width: 100px;
-    --stamp-width: calc(0.15 * var(--card-width));
+    --stamp-width: calc(0.12 * var(--card-width));
     --stamp-height: calc(1.5 * var(--stamp-width));
     --stamp-padding: calc(0.5 * var(--stamp-border-count));
     --stamp-border-count: calc(0.1 * var(--stamp-width));
     --stamp-border-size: calc(0.25 * var(--stamp-border-count));
     --stamp-border-offset: calc(-0.5 * var(--stamp-border-count));
+    --rotation: 1deg;
 	width: var(--stamp-width);
 	height: var(--stamp-height);
 	padding: var(--stamp-padding);
 	background: white;
 	position: relative;
-	filter: drop-shadow(0px 0px 10px rgba(0,0,0,0.5));
+	filter: drop-shadow(0px 0px 4px rgba(0,0,0,0.5));
 	background: radial-gradient(
 		transparent 0px, 
 		transparent var(--stamp-border-size), 
@@ -42,6 +48,7 @@ export default {
   
 	background-size: var(--stamp-border-count) var(--stamp-border-count);
 	background-position: var(--stamp-border-offset) var(--stamp-border-offset);
+    transform: rotate(var(--stamp-rotation));
 }
 
 .stamp-location {
