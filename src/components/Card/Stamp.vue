@@ -2,7 +2,9 @@
     <div class="stamp">
         <g-image 
             src="~/assets/stamps/utrecht.png"/>
-        {{location}}
+        <span class="stamp-location">
+            {{ location }}
+        </span>
     </div>
 </template>
 
@@ -18,14 +20,16 @@ export default {
 <style>
 /* Courtesy: https://codepen.io/orhanveli/pen/tbGJL */
 .stamp {
-    --stamp-width: 150px;
+    --stamp-width: 100px;
+    --stamp-width: calc(0.15 * var(--card-width));
     --stamp-height: calc(1.5 * var(--stamp-width));
+    --stamp-padding: calc(0.5 * var(--stamp-border-count));
     --stamp-border-count: calc(0.1 * var(--stamp-width));
     --stamp-border-size: calc(0.25 * var(--stamp-border-count));
     --stamp-border-offset: calc(-0.5 * var(--stamp-border-count));
 	width: var(--stamp-width);
 	height: var(--stamp-height);
-	padding: calc(0.5 * var(--stamp-border-count));
+	padding: var(--stamp-padding);
 	background: white;
 	position: relative;
 	filter: drop-shadow(0px 0px 10px rgba(0,0,0,0.5));
@@ -40,15 +44,18 @@ export default {
 	background-position: var(--stamp-border-offset) var(--stamp-border-offset);
 }
 
-.stamp:before {
-	content: 'CSS3';
+.stamp-location {
+    display: block;
+    width: var(--stamp-width);
+    text-align: center;
 	position: absolute;
 	bottom: 0; left: 0;
-	font: bold 24px arial;
-	color: white;
+	font: bold 14px arial;
+	color: rgb(255, 255, 255);
 	opacity: 0.75;
 	line-height: 100%;
-	padding: 20px;
+	filter: drop-shadow(0px 0px 1px rgb(0, 0, 0));
+	padding: var(--stamp-padding);
 }
 
 .stamp img {
