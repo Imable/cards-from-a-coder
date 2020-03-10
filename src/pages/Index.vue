@@ -1,16 +1,16 @@
 <template>
   <Layout>
-    <section class="posts">
-      <PostList v-for="edge in $page.allPost.edges" :key="edge.node.id" :post="edge.node" />
+    <section class="cards">
+      <Card v-for="edge in $page.allPost.edges" :key="edge.node.id" :post="edge.node" />
     </section>
   </Layout>
 </template>
 
 <script>
-import PostList from "@/components/PostList";
+import Card from "@/components/Card";
 export default {
   components: {
-    PostList
+    Card
   },
   metaInfo: {
     title: "Home"
@@ -37,3 +37,12 @@ query {
   }
 }
 </page-query>
+
+<style>
+.cards {
+    display: grid;
+    grid-gap: 50px;
+    grid-template-columns: 1fr 1fr;
+    padding: 50px;
+}
+</style>
