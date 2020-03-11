@@ -15,11 +15,10 @@
     <div
         class="vl"
         aria-hidden/>
+    <img
+        class="card-image"
+        src="../../content/posts/vue.jpg"/>
     <!-- <p class="date" v-html="post.date" />
-    <h1 class="title" v-html="post.title" />
-    <p class="description" v-html="post.description" />
-    <b> {{post.timeToRead}} min read </b>
-    <b> {{post.location}} </b>
     <g-link :to="post.path" class="read">Read More...</g-link> -->
   </div>
 </template>
@@ -42,14 +41,19 @@ export default {
     ],
     mixins: [
         RandomRotation
-    ]
+    ],
+    methods: {
+        // getCardImage (fname) {
+        //     return require.resolve(`../../content/posts/${fname}`)
+        // }
+    }
 }
 </script>
 
 <style>
 .card {
-    --card-height: 500px;
-    --card-width: calc(1.5 * var(--card-height));
+    --card-width: 750px;
+    --card-height: calc(0.66 * var(--card-width));;
     --card-padding: calc(0.05 * var(--card-height));
     --rotation: -1deg;
     height: var(--card-height);
@@ -75,6 +79,39 @@ export default {
     background-image: url('../assets/stamps/mask.png');
     background-size: calc(3 * var(--card-width)) calc(3 * var(--card-height));
     background-blend-mode: difference;
+
+    transition: 0.25s ease;
+}
+
+.card * {
+    opacity: 1;
+    transition: 0.25s ease;
+}
+
+.card .card-image {
+    position: absolute;
+    left: 0px; top: 0px;
+    width: 100%; height: 100%;
+    display: none;
+    opacity: 0;
+
+}
+
+.card:hover {
+    transition: 0.25s ease;
+    transform: rotate3d(0, 1, 0, 180deg);
+    box-shadow: 0px 0px 3px rgba(0, 0, 0, 0.514);
+}
+
+.card:hover * {
+    transition: 0.25s ease;
+    opacity: 0;
+}
+
+.card:hover .card-image {
+    transition: 0.25s ease;
+    display: block;
+    opacity: 1;
 }
 
 .card .stamp {

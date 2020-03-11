@@ -33,6 +33,7 @@ query {
         description
         date (format: "D MMMM YYYY")
         path
+        image
       }
     }
 
