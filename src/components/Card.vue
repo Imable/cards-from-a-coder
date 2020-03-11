@@ -1,5 +1,8 @@
 <template>
-  <div class="card">
+  <div 
+    class="card"
+    :class="flipped ? 'flipped' : ''"
+    @click="flipped=!flipped">
     <Stamp
         class="stamp"
         :location="post.location"/>
@@ -39,14 +42,14 @@ export default {
     props: [
         'post'
     ],
+    data () {
+        return {
+            flipped: false
+        }
+    },
     mixins: [
         RandomRotation
-    ],
-    methods: {
-        // getCardImage (fname) {
-        //     return require.resolve(`../../content/posts/${fname}`)
-        // }
-    }
+    ]
 }
 </script>
 
@@ -97,18 +100,18 @@ export default {
 
 }
 
-.card:hover {
+.card.flipped {
     transition: 0.25s ease;
-    transform: rotate3d(0, 1, 0, 180deg);
+    transform: rotate(calc(-1 * var(--rotation))) rotate3d(0, 1, 0, 180deg);
     box-shadow: 0px 0px 3px rgba(0, 0, 0, 0.514);
 }
 
-.card:hover * {
+.card.flipped * {
     transition: 0.25s ease;
     opacity: 0;
 }
 
-.card:hover .card-image {
+.card.flipped .card-image {
     transition: 0.25s ease;
     display: block;
     opacity: 1;
