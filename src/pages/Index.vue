@@ -34,6 +34,7 @@ query {
         date (format: "D MMMM YYYY")
         path
         image
+        flipped
       }
     }
 

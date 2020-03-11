@@ -2,7 +2,8 @@
   <div 
     class="card"
     :class="flipped ? 'flipped' : ''"
-    @click="flipped=!flipped">
+    @click="flipped=!flipped"
+    tabindex="-1">
     <Stamp
         class="stamp"
         :location="post.location"/>
@@ -44,7 +45,7 @@ export default {
     ],
     data () {
         return {
-            flipped: false
+            flipped: this.post.flipped
         }
     },
     mixins: [
