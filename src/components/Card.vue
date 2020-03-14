@@ -1,30 +1,46 @@
 <template>
-  <div 
-    class="card"
-    :class="flipped ? 'flipped' : ''"
-    @click="flipped=!flipped"
-    tabindex="-1">
-    <Stamp
-        class="stamp"
-        :location="post.location"/>
-    <Excerpt
-        class="excerpt"
-        :title="post.title"
-        :description="post.description"
-        />
-    <Address
-        class="address"
-        :addressee="post.addressee"
-        :destination="post.destination"/>
     <div
-        class="vl"
-        aria-hidden/>
-    <img
-        class="card-image"
-        src="../../content/posts/vue.jpg"/>
-    <!-- <p class="date" v-html="post.date" />
-    <g-link :to="post.path" class="read">Read More...</g-link> -->
-  </div>
+        class="card-container">
+        <div 
+            class="card"
+            ref="card"
+            :class="[
+                flipped ? 'flipped' : '',
+                vertical ? 'vertical' : ''
+            ]"
+            @click="flipped=!flipped">
+            <Stamp
+                class="stamp"
+                :location="post.location"
+                :postedOn="post.date"/>
+            <Excerpt
+                class="excerpt"
+                :title="post.title"
+                :description="post.description"
+                :path="post.path"
+                :timeToRead="post.timeToRead"/>
+            <Address
+                class="address"
+                :entries="{
+                    'To:': {
+                        'receiver': post.receiver,
+                        'destination': post.destination
+                    },
+                    'From:': {
+                        'sender': post.sender,
+                        'location': post.location
+                    }
+                }"/>
+            <div
+                class="divider"
+                :class="vertical ? 'hl' : 'vl'"
+                aria-hidden/>
+            <img
+                class="card-image"
+                src="../../content/posts/vue.jpg"/>
+            <!-- <p class="date" v-html="post.date" /> -->
+        </div>
+    </div>
 </template>
 
 <script>
@@ -32,37 +48,98 @@ import RandomRotation from '~/mixins/RandomRotation'
 import Address from './Card/Address'
 import Excerpt from './Card/Excerpt'
 import Stamp from './Card/Stamp'
+import Details from './Card/Details'
 
 export default {
     name: 'Card',
     components: {
         Address,
         Excerpt,
-        Stamp
+        Stamp,
+        Details
     },
     props: [
         'post'
     ],
     data () {
         return {
-            flipped: this.post.flipped
+            flipped: this.post.flipped,
+            vertical: this.post.vertical
         }
     },
     mixins: [
         RandomRotation
-    ]
+    ],
+    methods: {
+        setWidth (e) {
+            // let oldRotation = this.$el.style.getProperty('--rotation')
+            // console.log(computedStyle.getPropertyValue('width'))
+            let width = window.getComputedStyle(this.$el).getPropertyValue('width')
+
+            // console.log(oldRotation)
+
+            // this.$el.style.setProperty(
+            //     '--rotation', 
+            //     '0deg'
+            // )
+
+            // this.$el.style.setProperty(
+            //     '--card-width', 
+            //     '100%'
+            // )
+
+            console.log(width)
+
+            this.$el.style.setProperty(
+                '--card-width', 
+                `${width}`
+                // `${Math.round(this.$parent.$el.clientWidth)}px`
+            )
+
+            console.log(this.$el.clientWidth)
+
+            // this.$nextTick(function () {
+            //     console.log(`offset: ${this.$el.offsetWidth}`)
+            //     console.log(`client: ${this.$el.clientWidth}`)
+            //     // let width = window.getComputedStyle(this.$el).getPropertyValue('width')
+    
+
+            //     // this.$el.style.setProperty(
+            //     //     '--rotation', 
+            //     //     oldRotation
+            //     // )
+            // })
+
+        }
+    },
+    created () {
+        window.addEventListener("resize", this.setWidth);
+    },
+    mounted () {
+        this.setWidth()
+    },
+    destroyed () {
+        window.removeEventListener("resize", this.setWidth);
+    }
 }
 </script>
 
 <style>
+.card-container {
+    display: flex;
+    width: 100%;
+    height: min-content;
+    justify-content: center;
+}
+
 .card {
-    --card-width: 750px;
     --card-height: calc(0.66 * var(--card-width));;
     --card-padding: calc(0.05 * var(--card-height));
     --rotation: -1deg;
     height: var(--card-height);
-    width: var(--card-width);
+    width: 100%;
     padding: var(--card-padding);
+    box-sizing: border-box;
 
     display: grid;
     grid-gap: var(--card-padding);
@@ -73,7 +150,7 @@ export default {
         "content content . . stamp"
         "content content line address address"
         "content content line address address"
-        "content content . address address";
+        "content content . . .";
     justify-content: center;
     
     transform: rotate(var(--rotation));
@@ -81,10 +158,23 @@ export default {
     box-shadow: 1px 2px 3px rgba(0, 0, 0, 0.514);
     background-color: rgb(230, 230, 222);
     background-image: url('../assets/stamps/mask.png');
-    background-size: calc(3 * var(--card-width)) calc(3 * var(--card-height));
+    background-size: calc(1 * var(--card-width)) calc(1 * var(--card-height));
     background-blend-mode: difference;
 
     transition: 0.25s ease;
+}
+
+.card.vertical {
+    width: var(--card-height);
+    height: var(--card-width);
+    grid-template-columns: repeat(4, 1fr);
+    grid-template-rows: 1fr 1fr 2px 1fr 1fr;
+    grid-template-areas: 
+        "address address address stamp"
+        "address address address ."
+        ". line line ."
+        "content content content content"
+        "content content content content";
 }
 
 .card * {
@@ -98,7 +188,7 @@ export default {
     width: 100%; height: 100%;
     display: none;
     opacity: 0;
-
+    object-fit: cover;
 }
 
 .card.flipped {
@@ -125,6 +215,7 @@ export default {
 
 .card .address {
     grid-area: address;
+    align-self: center;
 }
 
 .card .excerpt {
@@ -132,7 +223,7 @@ export default {
     align-self: center;
 }
 
-.card .vl {
+.card .divider {
     grid-area: line;
 }
 </style>

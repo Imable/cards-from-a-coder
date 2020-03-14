@@ -1,15 +1,15 @@
 ---
-slug: "md-post"
-title: "From here to Spain"
-description: "A story about an anxious adolescent who is about to depart on an epic journey to test himself against mother nature. He will scale mountains, take snow storms head on and escape avalanches and dangerous cliffs."
-sender: "Abel van Beek"
-location: "Netherlands"
-receiver: "Test Person"
-destination: "Spain"
-date: 2019-05-21
+slug: "test-slug"
+title: "Earth, wind and fire"
+description: "After what is happening in the world with the Corona virus, we decided to show contingency by altering our travel plans completely. We are now on our way to Scotland to conquer the West Highland Way."
+sender: "Travelers"
+location: "Scotland"
+receiver: "Home Stayer"
+destination: "Netherlands"
+date: 2020-05-21
 image: vue.jpg
-flipped: true
-vertical: true
+flipped: false
+vertical: false
 ---
 
 Today, A lot of developers are conversant with the `alt` attribute on images. I can say most of us know that it is one way of making webpages accessible but do we really understand the scope of the alternative text, when to make use of it, how to use it. I agree it is one step to being an accessibility advocate so that is why in this article, I'll be explaining in detail the alt attribute and how practicing it can improve web accessibility in a long run.

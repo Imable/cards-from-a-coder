@@ -1,20 +1,22 @@
 <template>
     <ul>
         <li
-            v-for="(value, prop) in $props"
-            :key=value>
-            <p
-                :class="`address-${prop}`">
-                <span v-if="value">
-                    {{ value }}
-                </span>
-                <span v-else>
-                    &nbsp;
-                </span>
-            </p>
-            <div
-                aria-hidden
-                class="hl"/>
+            v-for="(entry, prop, index) in entries"
+            :key=index>
+            <span>
+                {{ prop }}
+            </span>
+
+            <span
+                v-for="line in entry"
+                :key="line">
+                <div
+                    aria-hidden
+                    class="hl"/>
+                <p>
+                    {{ line }}
+                </p>
+            </span>
         </li>
     </ul>
 </template>
@@ -23,8 +25,7 @@
 export default {
     name: 'Address',
     props: [
-        'addressee',
-        'destination'
+        'entries'
     ]
 }
 </script>
@@ -34,7 +35,11 @@ export default {
     list-style: none;
 }
 
-.address li:not(:nth-child(1)) p {
+.address li {
+    padding-top: 10px;
+}
+
+.address li span {
     padding-top: 10px;
 }
 </style>

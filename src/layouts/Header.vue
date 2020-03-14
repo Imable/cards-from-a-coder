@@ -1,8 +1,9 @@
 <template>
     <header>
-        <strong>
-            <g-link to="/">{{ $static.metadata.siteName }}</g-link>
-        </strong>
+        <g-link
+            id="site-name"
+            to="/">{{ $static.metadata.siteName }}
+            </g-link>
         <Navigation/>
     </header>
 </template>
@@ -25,3 +26,17 @@ export default {
     }
 }
 </script>
+
+<style>
+header {
+    /* position: relative; */
+    display: flex;
+    top: 0px; left: 0px;
+    width: 100%; height: 75px;
+    border-bottom: 1px solid black;
+}
+
+header #site-name {
+    margin: auto;
+}
+</style>

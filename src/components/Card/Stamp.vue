@@ -1,13 +1,20 @@
 <template>
     <div>
         <g-image 
+            :alt="`Stamp from ${location} in top-right corner.`"
             src="~/assets/stamps/utrecht.png"/>
-        <span class="location">
+        <span 
+            class="location">
             {{ location }}
-        </span>
+            </span>
     <g-image
+        aria-hidden
         class="postage-stamp"
         src="~/assets/stamps/postage-stamp.svg"/>
+    <span
+        class="posted-on">
+        {{ postedOn }}
+        </span>
     </div>
 </template>
 
@@ -17,7 +24,8 @@ import RandomRotation from '~/mixins/RandomRotation'
 export default {
     name: 'Stamp',
     props: [
-        'location'
+        'location',
+        'postedOn'
     ],
     mixins: [
         RandomRotation
@@ -28,7 +36,7 @@ export default {
 <style>
 /* Courtesy: https://codepen.io/orhanveli/pen/tbGJL */
 .stamp {
-    --stamp-width: 100px;
+    /* --stamp-width: 5vw; */
     --stamp-width: calc(0.12 * var(--card-width));
     --stamp-height: calc(1.5 * var(--stamp-width));
     --stamp-padding: calc(0.5 * var(--stamp-border-count));
@@ -79,6 +87,14 @@ export default {
     width: calc(3 * var(--stamp-width));
     transform: translateX(-75%) rotate(var(--rotation));
     mask-image: url('../../assets/stamps/mask.png');
+}
+
+.stamp .posted-on {
+    position: absolute;
+    left: 0px; top: 0px;
+    width: calc(3 * var(--stamp-width));
+    transform: translateX(-75%) rotate(var(--rotation));
+    font-size: 1.25em;
 }
 
 </style>
