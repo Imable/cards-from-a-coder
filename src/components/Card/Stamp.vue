@@ -10,7 +10,7 @@
     <g-image
         aria-hidden
         class="postage-stamp"
-        src="~/assets/stamps/postage-stamp.svg"/>
+        src="~/assets/stamp/postage-stamp.svg"/>
     <span
         class="posted-on">
         {{ postedOn }}
@@ -87,7 +87,7 @@ export default {
     left: 0px; top: 0px;
     width: calc(3 * var(--stamp-width));
     transform: translateX(-75%) rotate(var(--rotation));
-    mask-image: url('../../assets/stamps/mask.png');
+    mask-image: url('../../assets/card/mask.png');
 }
 
 .stamp .posted-on {

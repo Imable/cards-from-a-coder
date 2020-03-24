@@ -122,7 +122,7 @@ export default {
 
     box-shadow: 1px 2px 3px rgba(0, 0, 0, 0.514);
     background-color: rgb(230, 230, 222);
-    background-image: url('../assets/stamps/mask.png');
+    background-image: url('../assets/card/mask.png');
     background-size: calc(1 * var(--card-width)) calc(1 * var(--card-height));
     background-blend-mode: difference;
 

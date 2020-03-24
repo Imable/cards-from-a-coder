@@ -40,6 +40,7 @@ export default {
 
 *:not(h1):not(h2):not(h3) {
     font-size: 17px;
+    font-size: calc(1.5 * var(--unit));
     line-height: 1.25em;
 }
 
