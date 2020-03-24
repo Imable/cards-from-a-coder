@@ -11,6 +11,7 @@
             @click="flipped=!flipped">
             <Stamp
                 class="stamp"
+                :stamp="post.stamp"
                 :location="post.location"
                 :postedOn="post.date"/>
             <Excerpt
@@ -35,10 +36,9 @@
                 class="divider"
                 :class="vertical ? 'hl' : 'vl'"
                 aria-hidden/>
-            <img
+            <g-image
                 class="card-image"
-                src="../../content/posts/vue.jpg"/>
-            <!-- <p class="date" v-html="post.date" /> -->
+                :src="post.image"/>
         </div>
     </div>
 </template>
@@ -72,50 +72,15 @@ export default {
     ],
     methods: {
         setWidth (e) {
-            // let oldRotation = this.$el.style.getProperty('--rotation')
-            // console.log(computedStyle.getPropertyValue('width'))
             let width = window.getComputedStyle(this.$el).getPropertyValue('width')
-
-            // console.log(oldRotation)
-
-            // this.$el.style.setProperty(
-            //     '--rotation', 
-            //     '0deg'
-            // )
-
-            // this.$el.style.setProperty(
-            //     '--card-width', 
-            //     '100%'
-            // )
-
-            console.log(width)
-
             this.$el.style.setProperty(
                 '--card-width', 
                 `${width}`
-                // `${Math.round(this.$parent.$el.clientWidth)}px`
             )
-
-            console.log(this.$el.clientWidth)
-
-            // this.$nextTick(function () {
-            //     console.log(`offset: ${this.$el.offsetWidth}`)
-            //     console.log(`client: ${this.$el.clientWidth}`)
-            //     // let width = window.getComputedStyle(this.$el).getPropertyValue('width')
-    
-
-            //     // this.$el.style.setProperty(
-            //     //     '--rotation', 
-            //     //     oldRotation
-            //     // )
-            // })
-
         }
     },
-    created () {
-        window.addEventListener("resize", this.setWidth);
-    },
     mounted () {
+        window.addEventListener("resize", this.setWidth);
         this.setWidth()
     },
     destroyed () {

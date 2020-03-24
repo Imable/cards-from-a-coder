@@ -29,6 +29,10 @@ export default {
 </script>
 
 <style>
+:root {
+    --unit: calc((1vw + 2vh) / 3);
+}
+
 * {
     margin: 0px; padding: 0px;
     font-family: Consolas, Arial;

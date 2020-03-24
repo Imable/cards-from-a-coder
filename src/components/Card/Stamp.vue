@@ -2,7 +2,7 @@
     <div>
         <g-image 
             :alt="`Stamp from ${location} in top-right corner.`"
-            src="~/assets/stamps/utrecht.png"/>
+            :src="stamp"/>
         <span 
             class="location">
             {{ location }}
@@ -24,6 +24,7 @@ import RandomRotation from '~/mixins/RandomRotation'
 export default {
     name: 'Stamp',
     props: [
+        'stamp',
         'location',
         'postedOn'
     ],
