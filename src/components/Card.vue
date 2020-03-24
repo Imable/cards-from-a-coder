@@ -90,6 +90,10 @@ export default {
 </script>
 
 <style>
+.card-container *:not(h1):not(h2):not(h3) {
+    font-size: calc(100% - 0.4px);
+}
+
 .card-container {
     display: flex;
     width: 100%;

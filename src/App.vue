@@ -31,6 +31,7 @@ export default {
 <style>
 :root {
     --unit: calc((1vw + 2vh) / 3);
+    --size-separator: calc(0.15 * var(--unit));
 }
 
 * {
@@ -40,7 +41,7 @@ export default {
 
 *:not(h1):not(h2):not(h3) {
     font-size: 17px;
-    font-size: calc(1.5 * var(--unit));
+    font-size: calc(1.6 * var(--unit));
     line-height: 1.25em;
 }
 
@@ -51,12 +52,12 @@ html {
 
 
 .vl {
-    border-left: 2px solid rgb(0, 0, 0);
+    border-left: var(--size-separator) solid rgb(0, 0, 0);
     height: 100%;
 }
 
 .hl {
-    border-top: 2px solid black;
+    border-top: var(--size-separator) solid black;
     width: 100%;
 }
 </style>

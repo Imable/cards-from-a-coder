@@ -53,7 +53,7 @@ query {
 .cards {
     display: grid;
     grid-gap: 50px;
-    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
     padding: 50px;
     justify-items: center;
     align-items: center;
