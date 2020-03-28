@@ -1,5 +1,16 @@
 <template>
     <div>
+        <svg
+            class="filter"
+            aria-hidden>
+            <filter 
+                id="posterize">
+                <feComponentTransfer>
+                    <feFuncR type="discrete" tableValues="0 .5 1"/>
+                </feComponentTransfer>
+            </filter>
+        </svg>
+
         <g-image 
             :alt="`Stamp from ${location} in top-right corner.`"
             :src="stamp"/>
@@ -80,6 +91,8 @@ export default {
 .stamp img {
 	width: inherit;
 	height: inherit;
+    object-fit: cover;
+    filter: url('#posterize');
 }
 
 .stamp .postage-stamp {

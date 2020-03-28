@@ -49,7 +49,9 @@ html {
     background-color: white;
 }
 
-
+.filter {
+    display: none;
+}
 
 .vl {
     border-left: var(--size-separator) solid rgb(0, 0, 0);

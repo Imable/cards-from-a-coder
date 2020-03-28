@@ -8,7 +8,6 @@ receiver: "Test Person"
 destination: "Spain"
 date: 2019-05-21
 image: ../images/vue.jpg
-stamp: ../stamps/utrecht.png
 flipped: true
 vertical: true
 ---

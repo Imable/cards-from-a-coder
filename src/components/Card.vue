@@ -1,6 +1,17 @@
 <template>
     <div
         class="card-container">
+        <svg
+            class="filter"
+            aria-hidden>
+            <filter 
+                id="posterize">
+                <feComponentTransfer>
+                    <feFuncR type="discrete" tableValues="0 .5 1"/>
+                </feComponentTransfer>
+            </filter>
+        </svg>
+
         <div 
             class="card"
             ref="card"
@@ -11,7 +22,7 @@
             @click="flipped=!flipped">
             <Stamp
                 class="stamp"
-                :stamp="post.stamp"
+                :stamp="post.image"
                 :location="post.location"
                 :postedOn="post.date"/>
             <Excerpt
@@ -158,6 +169,7 @@ export default {
     display: none;
     opacity: 0;
     object-fit: cover;
+    filter: url('#posterize');
 }
 
 .card.flipped {

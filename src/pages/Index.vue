@@ -38,7 +38,6 @@ query {
         description
         date (format: "D MMMM YYYY")
         path
-        stamp
         image
         flipped
         vertical
