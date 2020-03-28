@@ -141,7 +141,7 @@ export default {
     background-size: calc(1 * var(--card-width)) calc(1 * var(--card-height));
     background-blend-mode: difference;
 
-    transition: 0.25s ease;
+    transition: transform 0.25s ease;
 }
 
 .card.vertical {
@@ -159,7 +159,6 @@ export default {
 
 .card * {
     opacity: 1;
-    transition: 0.25s ease;
 }
 
 .card .card-image {
@@ -173,18 +172,15 @@ export default {
 }
 
 .card.flipped {
-    transition: 0.25s ease;
     transform: rotate(calc(-1 * var(--rotation))) rotate3d(0, 1, 0, 180deg);
     box-shadow: 0px 0px 3px rgba(0, 0, 0, 0.514);
 }
 
 .card.flipped * {
-    transition: 0.25s ease;
     opacity: 0;
 }
 
 .card.flipped .card-image {
-    transition: 0.25s ease;
     display: block;
     opacity: 1;
 }
