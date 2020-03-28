@@ -4,7 +4,8 @@
         <p>{{ description }}</p>
         <g-link
             class="link-full-card"
-            :to="path">
+            :to="path"
+            @click.stop>
             Read card in {{ timeToRead }} min
             </g-link>
     </div>

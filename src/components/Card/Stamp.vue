@@ -7,11 +7,14 @@
                 id="posterize">
                 <feComponentTransfer>
                     <feFuncR type="discrete" tableValues="0 .5 1"/>
+                    <feFuncG type="discrete" tableValues="0 .5 1"/>
+                    <feFuncB type="discrete" tableValues="0 .5 1"/>
                 </feComponentTransfer>
             </filter>
         </svg>
 
-        <g-image 
+        <g-image
+            class="stamp-image"
             :alt="`Stamp from ${location} in top-right corner.`"
             :src="stamp"/>
         <span 
@@ -91,8 +94,11 @@ export default {
 .stamp img {
 	width: inherit;
 	height: inherit;
-    object-fit: cover;
+}
+
+.stamp .stamp-image {
     filter: url('#posterize');
+    object-fit: cover;
 }
 
 .stamp .postage-stamp {

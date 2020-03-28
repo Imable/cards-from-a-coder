@@ -7,7 +7,7 @@ location: "Scotland"
 receiver: "Home Stayer"
 destination: "Netherlands"
 date: 2020-05-21
-image: ../images/vue.jpg
+image: ../images/test.jpg
 flipped: false
 vertical: false
 ---

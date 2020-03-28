@@ -7,7 +7,9 @@
             <filter 
                 id="posterize">
                 <feComponentTransfer>
-                    <feFuncR type="discrete" tableValues="0 .5 1"/>
+                    <feFuncR type="discrete" tableValues="0 .2 .4 .6 .8 1"/>
+                    <feFuncG type="discrete" tableValues="0 .2 .4 .6 .8 1"/>
+                    <feFuncB type="discrete" tableValues="0 .2 .4 .6 .8 1"/>
                 </feComponentTransfer>
             </filter>
         </svg>
@@ -136,12 +138,17 @@ export default {
     transform: rotate(var(--rotation));
 
     box-shadow: 1px 2px 3px rgba(0, 0, 0, 0.514);
-    background-color: rgb(230, 230, 222);
+    background-color: white;
     background-image: url('../assets/card/mask.png');
     background-size: calc(1 * var(--card-width)) calc(1 * var(--card-height));
     background-blend-mode: difference;
 
-    transition: transform 0.25s ease;
+    transition: all 0.25s ease;
+    transition-property: transform, box-shadow;
+}
+
+.card:hover {
+    box-shadow: 1px 2px 10px rgba(0, 0, 0, 0.514);
 }
 
 .card.vertical {
@@ -173,7 +180,13 @@ export default {
 
 .card.flipped {
     transform: rotate(calc(-1 * var(--rotation))) rotate3d(0, 1, 0, 180deg);
-    box-shadow: 0px 0px 3px rgba(0, 0, 0, 0.514);
+    /* Flip the box shadow to still point to the same direction */
+    box-shadow: -1px 2px 3px rgba(0, 0, 0, 0.514);
+    border: white 15px solid;
+}
+
+.card.flipped:hover {
+    box-shadow: -1px 2px 10px rgba(0, 0, 0, 0.514);
 }
 
 .card.flipped * {

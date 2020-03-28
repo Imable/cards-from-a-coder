@@ -46,7 +46,7 @@ export default {
 }
 
 html {
-    background-color: white;
+    background-color: rgb(196, 255, 226);
 }
 
 .filter {
