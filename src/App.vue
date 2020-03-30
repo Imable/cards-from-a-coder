@@ -36,7 +36,7 @@ export default {
 
 * {
     margin: 0px; padding: 0px;
-    font-family: Consolas, Arial;
+    font-family: Consolas, Helvetica, sans-serif;
 }
 
 *:not(h1):not(h2):not(h3) {
@@ -47,6 +47,10 @@ export default {
 
 html {
     background-color: rgb(196, 255, 226);
+}
+
+ul {
+    list-style: square;
 }
 
 .filter {

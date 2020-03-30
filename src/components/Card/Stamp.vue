@@ -89,6 +89,7 @@ export default {
 	line-height: 100%;
 	filter: drop-shadow(0px 0px 1px rgb(0, 0, 0));
 	padding: var(--stamp-padding);
+    font-size: 0.75em; 
 }
 
 .stamp img {
