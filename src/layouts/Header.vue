@@ -2,6 +2,7 @@
     <header>
         <g-link
             id="site-name"
+            class="prepend-logo"
             to="/">{{ $static.metadata.siteName }}
             </g-link>
         <Navigation/>
@@ -38,5 +39,6 @@ header {
 
 header #site-name {
     margin: auto;
+    text-decoration: none;
 }
 </style>

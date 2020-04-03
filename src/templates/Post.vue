@@ -1,19 +1,24 @@
 <template>
   <Layout
-    class="full-post">
-    <g-link 
+    class="post">
+    <!-- <g-link 
         to="/" 
         class="link">
         &larr; Go Back
-    </g-link>
-    <div 
-        class="post-title">
-        <h1>{{$page.post.title}}</h1>
-        <p 
-            class="post-date">
-            {{ $page.post.date}} | {{$page.post.timeToRead}} min read 
-        </p>
+    </g-link> -->
+    <h1>{{$page.post.title}}</h1>
+    <p
+        class="quick-summary">
+        Quick summary: {{ $page.post.description }}
+    </p>
+    <div
+        class="hl"
+        aria-hidden>
     </div>
+    <details 
+        class="post-date">
+        {{ $page.post.date}} | {{$page.post.timeToRead}} min read 
+    </details>
     <div 
         class="post-content"
         v-html="$page.post.content">
@@ -24,19 +29,33 @@
 <page-query>
 query Post ($path: String!) {
    post: post (path: $path) {
-    id
-    title
-    location
-    content
-    date (format: "D MMMM YYYY")
-    timeToRead
+        id
+        title
+        sender
+        location
+        category
+        receiver
+        destination
+        timeToRead
+        description
+        content
+        date (format: "D MMMM YYYY")
+        path
+        image
   }
 }
 </page-query>
 
 <style>
-.full-post p {
+.post {
+    display: grid;
+}
+
+.post p, .post ul, .post ol, .post li {
     font-family: Helvetica, sans-serif;
-    padding: 1em;
+}
+
+.post .quick-summary {
+    font-style: italic;
 }
 </style>

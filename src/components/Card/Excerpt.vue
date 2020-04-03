@@ -1,7 +1,11 @@
 <template>
     <div>
-        <h2>{{ title }}</h2>
-        <p>{{ description }}</p>
+        <h2>
+            {{ title }}
+            </h2>
+        <p>
+            {{ description }}
+            </p>
         <g-link
             class="link-full-card"
             :to="path"
@@ -24,12 +28,13 @@ export default {
 </script>
 
 <style>
-.excerpt h2 {
-    padding-bottom: var(--card-padding);
-}
-
-.link-full-card {
-    display: inline-block;
-    padding-top: var(--card-padding);
+.excerpt {
+    display: grid;
+    grid-template-areas:
+        "title"
+        "description"
+        "callToAction";
+    grid-template-rows: 1fr 8fr 1fr;
+    gap: var(--card-padding);
 }
 </style>

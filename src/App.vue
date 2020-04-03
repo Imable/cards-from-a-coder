@@ -40,8 +40,8 @@ export default {
 }
 
 *:not(h1):not(h2):not(h3) {
-    font-size: 17px;
-    font-size: calc(1.6 * var(--unit));
+    /* font-size: 17px;
+    font-size: calc(1.6 * var(--unit)); */
     line-height: 1.25em;
 }
 
@@ -51,6 +51,11 @@ html {
 
 ul {
     list-style: square;
+}
+
+.prepend-logo::before {
+    content: '\2265\2264  ';
+    white-space: pre;
 }
 
 .filter {

@@ -2,6 +2,7 @@
 slug: "md-post"
 title: "From here to Spain"
 description: "A story about an anxious adolescent who is about to depart on an epic journey to test himself against mother nature. He will scale mountains, take snow storms head on and escape avalanches and dangerous cliffs."
+category: ["Travel", "Programming"]
 sender: "Abel van Beek"
 location: "Netherlands"
 receiver: "Test Person"

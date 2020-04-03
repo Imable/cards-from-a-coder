@@ -1,6 +1,7 @@
 <template>
     <div
-        class="card-container">
+        class="card-container"
+        v-resize-text="{ratio:3.25, minFontSize: '10px', maxFontSize: '50px', delay: 100}">
         <svg
             class="filter"
             aria-hidden>
@@ -103,11 +104,14 @@ export default {
 </script>
 
 <style>
-.card-container *:not(h1):not(h2):not(h3) {
+.card-container {
+    /* Fallback font-size if v-resize-text does not work */
     font-size: calc(100% - 0.4px);
 }
 
 .card-container {
+    /* Fallback rotation if JavaScript is somehow not kicking in */
+    --rotation: -1deg;
     display: flex;
     width: 100%;
     height: min-content;
@@ -117,7 +121,6 @@ export default {
 .card {
     --card-height: calc(0.66 * var(--card-width));;
     --card-padding: calc(0.05 * var(--card-height));
-    --rotation: -1deg;
     height: var(--card-height);
     width: 100%;
     padding: var(--card-padding);
@@ -209,6 +212,7 @@ export default {
 }
 
 .card .excerpt {
+    max-height: 100%;
     grid-area: content;
     align-self: center;
 }
