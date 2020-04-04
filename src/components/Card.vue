@@ -1,7 +1,10 @@
 <template>
     <div
         class="card-container"
-        v-resize-text="{ratio:3.25, minFontSize: '10px', maxFontSize: '50px', delay: 100}">
+        :class="[
+            vertical ? 'vertical' : ''
+        ]"
+        v-resize-text="vertical ? {ratio:2.35, minFontSize: '9px', maxFontSize: '50px', delay: 100} : {ratio:3.1, minFontSize: '9px', maxFontSize: '50px', delay: 100}">
         <svg
             class="filter"
             aria-hidden>
@@ -105,24 +108,31 @@ export default {
 
 <style>
 .card-container {
-    /* Fallback font-size if v-resize-text does not work */
-    font-size: calc(100% - 0.4px);
-}
-
-.card-container {
     /* Fallback rotation if JavaScript is somehow not kicking in */
     --rotation: -1deg;
+    /* Fallback font-size if v-resize-text does not work */
+    font-size: calc(100% - 0.4px);
+
     display: flex;
     width: 100%;
-    height: min-content;
+    /* height: min-content; */
     justify-content: center;
+    line-height: 1.25em;
+
+    grid-column: span 3;
+    grid-row: span 2;
+}
+
+.card-container.vertical {
+    grid-column: span 2;
+    grid-row: span 3;
 }
 
 .card {
     --card-height: calc(0.66 * var(--card-width));;
-    --card-padding: calc(0.05 * var(--card-height));
+    --card-padding: calc(0.04 * var(--card-height));
     height: var(--card-height);
-    width: 100%;
+    width: var(--card-width);
     padding: var(--card-padding);
     box-sizing: border-box;
 
@@ -155,11 +165,12 @@ export default {
 }
 
 .card.vertical {
-    width: var(--card-height);
-    height: var(--card-width);
+    --card-height: calc(1.33 * var(--card-width));
+    height: var(--card-height);
+    width: var(--card-width);
     grid-template-columns: repeat(4, 1fr);
     grid-template-rows: 1fr 1fr 2px 1fr 1fr;
-    grid-template-areas: 
+    grid-template-areas:
         "address address address stamp"
         "address address address ."
         ". line line ."
@@ -185,7 +196,7 @@ export default {
     transform: rotate(calc(-1 * var(--rotation))) rotate3d(0, 1, 0, 180deg);
     /* Flip the box shadow to still point to the same direction */
     box-shadow: -1px 2px 3px rgba(0, 0, 0, 0.514);
-    border: white 15px solid;
+    border: white var(--card-padding) solid;
 }
 
 .card.flipped:hover {
@@ -219,5 +230,11 @@ export default {
 
 .card .divider {
     grid-area: line;
+}
+
+@media only screen and (max-width: 350px) {
+    .card-container {
+        grid-column: 1 / -1;
+    }
 }
 </style>

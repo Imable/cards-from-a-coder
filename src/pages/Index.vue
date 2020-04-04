@@ -44,18 +44,19 @@ query {
         vertical
       }
     }
-
   }
 }
 </page-query>
 
 <style>
 .cards {
+    --cards-spacing: calc(7 * var(--unit));
     display: grid;
-    grid-gap: 50px;
-    grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
-    padding: 50px;
+    grid-gap: var(--cards-spacing);
+    grid-template-columns: repeat(auto-fit, minmax(100px, 1fr));
+    padding: var(--cards-spacing);
     justify-items: center;
     align-items: center;
+    grid-auto-flow: dense;
 }
 </style>

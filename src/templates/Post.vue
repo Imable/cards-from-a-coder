@@ -6,21 +6,30 @@
         class="link">
         &larr; Go Back
     </g-link> -->
-    <h1>{{$page.post.title}}</h1>
+    <h1
+        class="title">{{$page.post.title}}</h1>
+    <ul 
+        class="details">
+        <li>
+            Posted on {{ $page.post.date}}
+        </li>
+        <li>
+           Time to read {{ $page.post.timeToRead }} 
+        </li>
+        <li>
+            Tags {{ $page.post.category }}
+        </li>
+    </ul>
     <p
-        class="quick-summary">
+        class="summary">
         Quick summary: {{ $page.post.description }}
     </p>
     <div
-        class="hl"
+        class="hl divider"
         aria-hidden>
     </div>
-    <details 
-        class="post-date">
-        {{ $page.post.date}} | {{$page.post.timeToRead}} min read 
-    </details>
     <div 
-        class="post-content"
+        class="content"
         v-html="$page.post.content">
     </div>
   </Layout>
@@ -47,15 +56,43 @@ query Post ($path: String!) {
 </page-query>
 
 <style>
-.post {
+.post main {
     display: grid;
+    grid-template-areas: 
+        "wsl title details"
+        "wsl summary details"
+        "wsl divider wsr"
+        "wsl content wsr";
+    grid-template-columns: 1fr 55vw 1fr;
+    gap: 1em;
 }
 
 .post p, .post ul, .post ol, .post li {
     font-family: Helvetica, sans-serif;
 }
 
-.post .quick-summary {
+.post .title {
+    grid-area: title;
+}
+
+.post .summary {
     font-style: italic;
+    grid-area: summary;
+}
+
+.post .divider {
+    grid-area: divider;
+}
+
+.post .details {
+    grid-area: details;
+}
+
+.post .content {
+    grid-area: content;
+}
+
+.post .content * {
+    padding: 0.25em 0px;
 }
 </style>

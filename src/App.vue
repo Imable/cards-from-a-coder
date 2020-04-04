@@ -32,6 +32,8 @@ export default {
 :root {
     --unit: calc((1vw + 2vh) / 3);
     --size-separator: calc(0.15 * var(--unit));
+    line-height: 1.75em;
+    font-size: 17px;
 }
 
 * {
@@ -39,14 +41,12 @@ export default {
     font-family: Consolas, Helvetica, sans-serif;
 }
 
-*:not(h1):not(h2):not(h3) {
-    /* font-size: 17px;
-    font-size: calc(1.6 * var(--unit)); */
-    line-height: 1.25em;
-}
-
 html {
     background-color: rgb(196, 255, 226);
+}
+
+main {
+    padding-top: 100px;
 }
 
 ul {
@@ -54,8 +54,10 @@ ul {
 }
 
 .prepend-logo::before {
-    content: '\2265\2264  ';
+    content: '\2265\2264';
+    padding: 0px 1em;
     white-space: pre;
+    letter-spacing: -0.2em;
 }
 
 .filter {

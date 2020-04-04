@@ -30,7 +30,7 @@ export default {
 
 <style>
 header {
-    /* position: relative; */
+    position: fixed;
     display: flex;
     top: 0px; left: 0px;
     width: 100%; height: 75px;

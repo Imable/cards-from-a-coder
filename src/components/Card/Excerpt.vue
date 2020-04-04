@@ -28,7 +28,7 @@ export default {
 </script>
 
 <style>
-.excerpt {
+.card .excerpt {
     display: grid;
     grid-template-areas:
         "title"

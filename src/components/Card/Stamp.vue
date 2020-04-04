@@ -81,15 +81,18 @@ export default {
     display: block;
     width: var(--stamp-width);
     text-align: center;
+    writing-mode: vertical-rl;
 	position: absolute;
-	bottom: 0; left: 0;
+	top: 0; left: 0;
 	font: bold 14px arial;
 	color: rgb(255, 255, 255);
 	opacity: 0.75;
 	line-height: 100%;
 	filter: drop-shadow(0px 0px 1px rgb(0, 0, 0));
 	padding: var(--stamp-padding);
-    font-size: 0.75em; 
+    font-size: 0.7em;
+
+    word-wrap: break-word;
 }
 
 .stamp img {

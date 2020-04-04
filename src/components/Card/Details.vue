@@ -21,7 +21,7 @@ export default {
 </script>
 
 <style>
-.details {
+.card .details {
     display: inline-block;
     position: absolute;
     bottom: var(--card-padding);
