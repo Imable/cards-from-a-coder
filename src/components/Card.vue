@@ -118,6 +118,7 @@ export default {
     justify-content: center;
     line-height: 1.25em;
 
+    justify-self: center;
     grid-column: span 3;
     grid-row: span 2;
 }
