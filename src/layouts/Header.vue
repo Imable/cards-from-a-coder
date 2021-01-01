@@ -34,11 +34,13 @@ header {
     display: flex;
     top: 0px; left: 0px;
     width: 100%; height: 75px;
-    border-bottom: 1px solid black;
+    /* border-bottom: 1px solid black; */
+    z-index: 1;
 }
 
 header #site-name {
     margin: auto;
     text-decoration: none;
+    text-transform: uppercase;
 }
 </style>

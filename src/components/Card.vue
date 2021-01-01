@@ -1,10 +1,9 @@
 <template>
     <div
         class="card-container"
-        :class="[
-            vertical ? 'vertical' : ''
-        ]"
-        v-resize-text="vertical ? {ratio:2.35, minFontSize: '9px', maxFontSize: '50px', delay: 100} : {ratio:3.1, minFontSize: '9px', maxFontSize: '50px', delay: 100}">
+        :class="{
+            vertical: vertical
+        }">
         <svg
             class="filter"
             aria-hidden>
@@ -21,10 +20,10 @@
         <div 
             class="card"
             ref="card"
-            :class="[
-                flipped ? 'flipped' : '',
-                vertical ? 'vertical' : ''
-            ]"
+            :class="{
+                flipped: flipped,
+                vertical: vertical
+            }"
             @click="flipped=!flipped">
             <Stamp
                 class="stamp"

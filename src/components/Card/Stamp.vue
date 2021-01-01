@@ -114,6 +114,7 @@ export default {
 }
 
 .stamp .posted-on {
+    font-family: Consolas, monospace;
     position: absolute;
     left: 0px; top: 0px;
     width: calc(3 * var(--stamp-width));

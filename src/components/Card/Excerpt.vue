@@ -37,4 +37,8 @@ export default {
     grid-template-rows: 1fr 8fr 1fr;
     gap: var(--card-padding);
 }
+
+.card .excerpt *:not(h2) {
+    font-family: Consolas, Helvetica, sans-serif;
+}
 </style>

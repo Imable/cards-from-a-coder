@@ -35,6 +35,10 @@ export default {
     list-style: none;
 }
 
+.address p {
+    font-family: Consolas, Helvetica, sans-serif;
+}
+
 .address li {
     padding-top: 10px;
 }

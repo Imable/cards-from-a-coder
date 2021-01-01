@@ -1,10 +1,12 @@
 <template>
   <Layout>
+    <!-- {{$page.posts.totalCount}} -->
     <section class="cards">
       <Card
-        v-for="edge in $page.allPost.edges" 
+        v-for="edge in $page.posts.edges" 
         :key="edge.node.id" 
-        :post="edge.node"/>
+        :post="edge.node"
+        v-resize-text="edge.node.vertical ? {ratio:2.35, minFontSize: '9px', maxFontSize: '50px', delay: 100} : {ratio:3.1, minFontSize: '9px', maxFontSize: '50px', delay: 100}"/>
     </section>
   </Layout>
 </template>
@@ -23,8 +25,8 @@ export default {
 </script>
 
 <page-query>
-query {
-  allPost {
+query PostsByCategory {
+  posts: allPost {
     totalCount
     edges {
       node {
